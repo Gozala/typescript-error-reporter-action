@@ -52,7 +52,7 @@ jobs:
 
 ## Passing `project` parameter
 
-If your working with a monorepo or your `tsconfig.json` is not in the root repo,
+If you're working with a monorepo or your `tsconfig.json` is not in the root repo,
 or you use different config file, you can provide a `project` parmeter with a
 path to the repo itself:
 
@@ -61,4 +61,14 @@ path to the repo itself:
   uses: gozala/typescript-error-reporter-action@v1.0.5
   with:
     project: packages/subpackage/tsconfig.json
+```
+## Passing `error_fail_threshold` parameter
+
+If you're incrementally adopting typescript in a project, you may not want to fail the entire workflow on a single typescript error. `error_fail_threshold` allows you to pass the maximum number of errors at which the step passes. Defaults to 0:
+
+```yaml
+- name: Typecheck
+  uses: gozala/typescript-error-reporter-action@v1.0.9
+  with:
+    error_fail_threshold: 100
 ```

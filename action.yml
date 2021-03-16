@@ -11,3 +11,7 @@ inputs:
   project:
     description: 'Optional project path.'
     required: false
+  error_fail_threshold:
+    description: 'Optional number of errors threshold at which this step fails.'
+    required: false
+  

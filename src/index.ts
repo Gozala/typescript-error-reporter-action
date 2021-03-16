@@ -55,8 +55,12 @@ const typecheck = (projectPath:string) => {
     ? performIncrementalCompilation(ts, projectPath)
     : performCompilation(ts, config)
 
-  if (errors > 0) {
-    setFailed(`Found ${errors} errors!`)
+  
+  const errThreshold = Number(getInput('error_fail_threshold') || 0)
+  const logString = `Found ${errors} errors!`
+  console.log(logString)
+  if (errors > errThreshold) {
+    setFailed(logString)
   }
 }
 
